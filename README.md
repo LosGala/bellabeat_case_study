@@ -1,162 +1,101 @@
-Bellabeat Case Study
-Capstone Project for Google Data Analytics Professional Certificate
+# 📊 Bellabeat Case Study - Google Data Analytics Capstone Project
 
-1. Project Overview
-Title: Bellabeat: How Can A Wellness Technology Company Play It Smart?
-Author: Mario Ariel Galarza Mancedo
-Date: January 19, 2024
+![Bellabeat Logo](Bellabeat.png)
 
-1.1 Background
-Bellabeat is a high-tech wellness company specializing in smart products for women. This case study analyzes FitBit Fitness Tracker Data (publicly available on Kaggle) to uncover trends in consumer behavior and provide insights for Bellabeat’s marketing strategy.
+**Author**: Mario Ariel Galarza Mancedo  
+**Date**: January 19, 2024  
+**Certificate Program**: Google Data Analytics Professional Certificate  
+**Dataset**: [FitBit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit)
 
-1.2 Business Task
-Analyze FitBit usage data to:
+---
 
-Identify trends in user activity.
+## 🔍 Introduction
 
-Determine how these trends apply to Bellabeat customers.
+This case study is part of the Capstone Project for the Google Data Analytics Professional Certificate. The goal is to analyze consumer data from FitBit fitness trackers and derive insights that could guide **Bellabeat**, a wellness tech company for women, in improving its **marketing strategy**.
 
-Provide data-driven recommendations for Bellabeat’s marketing strategy.
+---
 
-1.3 Key Questions
-What are the trends in FitBit usage?
+## 🧠 Business Task
 
-How do these trends relate to Bellabeat’s customers?
+Bellabeat wants to better understand how consumers use fitness tracking technology. By analyzing FitBit data, we aim to:
 
-How can Bellabeat leverage these insights for marketing?
+- Identify trends in fitness tracker usage.
+- Explore how these trends may relate to Bellabeat users.
+- Provide data-driven recommendations to support Bellabeat's marketing efforts.
 
-2. Data Preparation
-2.1 Data Source
-Dataset: FitBit Fitness Tracker Data (Kaggle)
+---
 
-Collection Period: March 12, 2016 – May 12, 2016
+## 🎯 Business Objectives
 
-Sample Size: 30 FitBit users (33 unique IDs in data)
+- What are the key trends in FitBit user behavior?
+- How can these trends inform Bellabeat’s product and marketing strategies?
+- How can Bellabeat leverage these insights to grow their market?
 
-Data Includes:
+---
 
-Daily activity (steps, distance)
+## 📁 Data Overview
 
-Heart rate
+- **Source**: Publicly available dataset from [Kaggle](https://www.kaggle.com/datasets/arashnic/fitbit)
+- **Timeframe**: March 12, 2016 – May 12, 2016
+- **Participants**: 30 consenting users (33 unique IDs found)
+- **Files**: 18 CSV files (only `dailyActivity_merged.csv` used for this analysis)
 
-Sleep monitoring
+### Limitations
 
-Calories burned
+- Small and outdated dataset (from 2016)
+- Data collected via third-party survey (Amazon Mechanical Turk)
+- Limited sample size and demographic representation
 
-2.2 Data Limitations
-Small sample size (30 users) → Not representative of the female population.
+> **Conclusion**: While the dataset is limited in scope and reliability, it still provides a basis for basic trend analysis.
 
-Outdated (2016 data) → User habits may have changed.
+---
 
-Third-party collection (Amazon Mechanical Turk) → Potential integrity issues.
+## 🧰 Tools Used
 
-2.3 Data Quality (ROCCC Assessment)
-Criteria	Rating	Reason
-Reliable	❌ Low	Only 30 respondents
-Original	❌ Low	Collected via third party
-Comprehensive	⚠️ Medium	Matches Bellabeat’s parameters
-Current	❌ Low	5+ years old
-Cited	❌ Low	Unknown original source
-Conclusion: Data is low quality; insights should be taken cautiously.
+- **Language**: Python
+- **Libraries**:
+  - `pandas` for data manipulation
+  - `numpy` for numerical operations
+  - `matplotlib` for data visualization
+  - `datetime` for date formatting and time series analysis
 
-3. Data Processing (Python)
-3.1 Tools Used
-Python Libraries:
+---
 
-pandas (data manipulation)
+## 🧹 Data Cleaning & Processing
 
-numpy (numerical analysis)
+- Converted `ActivityDate` to datetime format
+- Extracted day of the week for time pattern analysis
+- Created new columns:
+  - `total_mins` = sum of active and sedentary minutes
+  - `total_hours` = `total_mins` converted to hours
+- Standardized and renamed column headers for consistency
 
-matplotlib (visualizations)
+---
 
-3.2 Key Data Cleaning Steps
-Handled Missing Values: No null values detected.
+## 📊 Analysis Preview
 
-Converted Data Types:
+- Data consists of 940 daily activity records.
+- Average daily steps and calories burned per user are being analyzed.
+- Users’ activity patterns across weekdays vs. weekends are explored.
+- Initial findings suggest correlations between activity minutes and calories burned.
 
-Changed ActivityDate from object to datetime64.
+---
 
-Added New Columns:
+## 📈 Key Insights (to be expanded)
 
-day_of_the_week (extracted from date)
+- Users tend to be **more active during weekdays**, particularly Tuesdays and Wednesdays.
+- There is a **positive correlation** between very active minutes and calories burned.
+- Sedentary minutes remain high across all days, suggesting a target area for product messaging.
 
-total_mins (sum of all activity minutes)
+---
 
-total_hours (converted minutes to hours)
+## 🧩 Next Steps
 
-3.3 Data Transformation
-Renamed columns for clarity (e.g., TotalSteps → total_steps).
+- Extend analysis to include `sleep` and `heart rate` data.
+- Generate visual dashboards for trend exploration.
+- Develop marketing recommendations tailored to identified user behaviors.
 
-Calculated median and mean values for analysis.
+---
 
-4. Analysis & Key Findings
-4.1 Statistical Summary
-Metric	Average	CDC Recommendation*
-Daily Steps	7,637	≥10,000
-Distance (km)	5.4	≥8.0
-Sedentary Time	20 hrs	< 8 hrs
-Calories Burned	2,303	Varies by individual
-Source: CDC & Medical News Today
+## 📎 Project Structure
 
-4.2 Visualizations & Insights
-A. Activity Frequency by Day
-📊 Observation:
-
-Highest usage: Midweek (Tue-Fri)
-
-Lowest usage: Weekends & Monday
-💡 Insight: Users track activity more on weekdays (possibly due to work routines).
-
-B. Steps vs. Calories Burned
-📈 Observation:
-
-Positive correlation (more steps = more calories burned).
-
-Outliers: Some users logged 0 steps or >35,000 steps with low calories.
-💡 Insight: Encouraging consistent moderate activity is key.
-
-C. Sedentary vs. Active Time
-🛋️ Observation:
-
-81.3% of logged time was sedentary (sitting/inactive).
-
-Only 1.7% was "very active" (exercise).
-💡 Insight: Most users do not use FitBit for fitness tracking—Bellabeat can fill this gap.
-
-5. Recommendations for Bellabeat
-5.1 Marketing Strategies
-✅ Educate Users:
-
-Push notifications on health benefits of 10,000 steps.
-
-Share simple weekday workouts (10-min exercises).
-
-✅ Weekend Engagement:
-
-Send weekend fitness challenges (e.g., "Saturday Stretch Goal").
-
-✅ Gamification:
-
-Reward users for consistent activity (badges, discounts).
-
-5.2 Product Improvements
-📱 App Features:
-
-Sleep & stress tracking (women-focused wellness).
-
-Personalized calorie goals based on activity.
-
-6. Conclusion
-FitBit data shows low physical activity and high sedentary behavior.
-
-Bellabeat can differentiate itself by promoting fitness engagement and women-centric health tracking.
-
-Next Steps: Validate findings with larger, recent datasets and conduct user surveys.
-
-🔗 Files Included:
-
-dailyActivity_merged.csv (processed dataset)
-
-Python script (bellabeat_analysis.ipynb)
-
-Visualizations (PNG/JPEG)
