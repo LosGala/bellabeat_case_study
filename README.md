@@ -95,7 +95,5 @@ Bellabeat wants to better understand how consumers use fitness tracking technolo
 - Generate visual dashboards for trend exploration.
 - Develop marketing recommendations tailored to identified user behaviors.
 
----
 
-## 📎 Project Structure
 
